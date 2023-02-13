@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -24,7 +25,7 @@ import java.util.Date;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = UserEntity.TABLE_NAME)
-public class UserEntity {
+public class UserEntity implements Serializable {
 
     public static final String TABLE_NAME = "users";
     private static final long serialVersionUUID = 1234567893245092173L;
