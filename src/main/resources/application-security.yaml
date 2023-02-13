@@ -1,0 +1,8 @@
+spring:
+  secret-key: '655468576D5A7134743777217A25432A462D4A614E645266556A586E32723575'
+  jwt-issuer: 'Jeyhun Mammadsaidov'
+#server:
+#  port: 8090
+#logging:
+#  level:
+#    ROOT: DEBUG
