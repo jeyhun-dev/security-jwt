@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 @Configuration
 @RequiredArgsConstructor
@@ -31,11 +31,12 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.POST,
-                            List.of(ApiPathConst.PostApiPath.values())
-                                    .stream()
-                                    .map(authPath ->
-                                            ApiPathConst.PostApiPath.values())
-                                    .toArray(String[]::new)).permitAll().anyRequest().authenticated();
+                            Stream.of(ApiPathConst.PostApiPath.values())
+                                    .map(ApiPathConst.PostApiPath::getPath)
+                                    .toArray(String[]::new))
+                            .permitAll()
+                            .anyRequest()
+                            .authenticated();
                 })
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

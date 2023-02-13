@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public String signUp(UserRegisterRequestDto userRegister) {
+    public String signUp(final UserRegisterRequestDto userRegister) {
         if (existsEmailTaken(userRegister.getEmail())) {
             throw new EmailAlreadyExistsException();
         }
